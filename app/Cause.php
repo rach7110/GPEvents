@@ -10,6 +10,6 @@ class Cause extends Model
 
     public function events()
     {
-        $this->belongsToMany('App\Event', 'events_causes_rel');
+        $this->belongsToMany('App\GpEvent', 'events_causes_rel');
     }
 }
