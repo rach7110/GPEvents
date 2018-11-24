@@ -1,5 +1,6 @@
 <?php
 
+use App\GpEvent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +11,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('database', function() {
+    try {
+        DB::connection()->getPdo();
+        die("Connected");
+    } catch (\Exception $e) {
+        die("Could not connect to the database.  Please check your configuration. error:" . $e );
+    }
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('events', 'GpEventController@index');
