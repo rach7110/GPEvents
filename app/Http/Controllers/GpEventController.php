@@ -9,17 +9,34 @@ use App\Cause;
 class GpEventController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of events.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $events = GpEvent::all()->take(15);
+        $events = GpEvent::all();
         $causes = Cause::all();
 
         return view('events.index', ['events' => $events, 'causes' => $causes]);
+    }
 
+    /**
+     * Display a listing of events filtered by causes.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */ 
+    public function causes(Request $request)
+    {
+        $filtered_causes = $request->input('causes');
+        $causes = Cause::all();
+
+        $events = GpEvent::whereHas('causes', function ($query) use ($filtered_causes) {
+            $query->whereIn('cause_id', $filtered_causes);
+        })->get();
+
+        return view('events.index', ['events' => $events, 'causes' => $causes]);
     }
 
     /**

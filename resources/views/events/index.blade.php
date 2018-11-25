@@ -2,15 +2,18 @@
 <head></head>
 @section('content')
     {{-- Filter --}}
-    <form class="form-inline">
+    <form class="form-inline" action="{{route('filterByCause')}}" method="POST">
+            {{ csrf_field() }}
+
         <div class="form-group">
-            <label for="exampleFormControlSelect2">Filter by Cause:</label>
-            <select multiple class="form-control" id="exampleFormControlSelect2">
+            <label for="causes">Filter by Cause:</label>
+            <select multiple class="form-control" id="causes" name="causes[]">
                 @foreach ($causes as $cause)
-                    <option>{{$cause->name}}</option>
+                    <option value="{{$cause->id}}">{{$cause->name}}</option>
                 @endforeach
             </select>
         </div>
+        <button type="submit" class="btn btn-primary">Submit<button>
     </form>
 
     <h1>Events</h1>
