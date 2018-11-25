@@ -24,5 +24,5 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('events', 'GpEventController@index');
+Route::get('events', 'GpEventController@index')->name('events');
 Route::post('events/causes', 'GpEventController@filteredByCause')->name('filterByCause');

@@ -15,8 +15,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <button type="submit" class="btn btn-dark">Reset</button>
-
+    <a href="{{route('events')}}" role="button" class="btn btn-dark">Reset</a>
 
     <h1>Events</h1>
     @foreach ($events as $event)
