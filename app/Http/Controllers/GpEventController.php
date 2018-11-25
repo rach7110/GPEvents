@@ -16,12 +16,8 @@ class GpEventController extends Controller
     {
         $events = GpEvent::all()->take(5);
 
-        foreach($events as $event) {
-            print_r($event->title);
-            echo "<br>";
-        }
-    
-        exit();
+        return view('events.index', ['events' => $events]);
+
     }
 
     /**
