@@ -22,6 +22,6 @@ Route::get('database', function() {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('events', 'GpEventController@index');
