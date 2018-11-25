@@ -2,9 +2,8 @@
 <head></head>
 @section('content')
     {{-- Filter --}}
-    <form class="form-inline" action="{{route('filterByCause')}}" method="POST">
-            {{ csrf_field() }}
-
+    <form class="" action="{{route('filterByCause')}}" method="POST">
+        {{ csrf_field() }}
         <div class="form-group">
             <label for="causes">Filter by Cause:</label>
             <select multiple class="form-control" id="causes" name="causes[]">
@@ -13,8 +12,11 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit<button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <button type="submit" class="btn btn-dark">Reset</button>
+
 
     <h1>Events</h1>
     @foreach ($events as $event)

@@ -15,7 +15,7 @@ class GpEventController extends Controller
      */
     public function index()
     {
-        $events = GpEvent::all();
+        $events = GpEvent::all()->take(500);
         $causes = Cause::all();
 
         return view('events.index', ['events' => $events, 'causes' => $causes]);
@@ -27,7 +27,7 @@ class GpEventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */ 
-    public function causes(Request $request)
+    public function filteredByCause(Request $request)
     {
         $filtered_causes = $request->input('causes');
         $causes = Cause::all();
