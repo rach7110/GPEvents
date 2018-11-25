@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\GpEvent;
 use Illuminate\Http\Request;
+use App\GpEvent;
 
 class GpEventController extends Controller
 {
@@ -14,7 +14,7 @@ class GpEventController extends Controller
      */
     public function index()
     {
-        $events = GpEvent::all()->take(5);
+        $events = GpEvent::all()->take(15);
 
         return view('events.index', ['events' => $events]);
 
