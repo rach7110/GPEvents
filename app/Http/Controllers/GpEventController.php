@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GpEvent;
+use App\Cause;
 
 class GpEventController extends Controller
 {
@@ -15,8 +16,9 @@ class GpEventController extends Controller
     public function index()
     {
         $events = GpEvent::all()->take(15);
+        $causes = Cause::all();
 
-        return view('events.index', ['events' => $events]);
+        return view('events.index', ['events' => $events, 'causes' => $causes]);
 
     }
 
