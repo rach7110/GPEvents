@@ -10,7 +10,7 @@ class Skill extends Model
 
     public function events()
     {
-        $this->belongsToMany('App\GpEvent', 'event_skills');
+        return $this->belongsToMany('App\GpEvent', 'event_skills');
     }
 
 }

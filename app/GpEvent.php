@@ -10,11 +10,11 @@ class GpEvent extends Model
 
     public function causes()
     {
-        $this->belongsToMany('App\Cause', 'events_causes_rel');
+        return $this->belongsToMany('App\Cause', 'events_causes_rel', 'event_id', 'cause_id');
     }
 
     public function skills()
     {
-        $this->belongsToMany('App\Skill', 'event_skills');
+        return $this->belongsToMany('App\Skill', 'event_skills');
     }
 }
