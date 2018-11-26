@@ -35,6 +35,9 @@
                 success:function(data){
                     $("#events").empty().append(data);
                 }
+            }).fail(function(xhr){
+                var errMsg = $.parseJSON(xhr.responseText);
+                console.log(errMsg);
             });
         });
     });
