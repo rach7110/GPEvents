@@ -36,10 +36,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('welcome')}}">Menu Placeholder</a>
+                    {{-- <a class="nav-link" href="{{route('welcome')}}">Menu Placeholder</a> --}}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('welcome')}}">Menu Placeholder</a>
+                    {{-- <a class="nav-link" href="{{route('welcome')}}">Menu Placeholder</a> --}}
                 </li>
             </ul>
         </div>
