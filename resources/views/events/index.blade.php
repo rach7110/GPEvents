@@ -1,33 +1,43 @@
 @extends('layouts.master')
 <head></head>
 @section('content')
-    {{-- Filter --}}
-    <form class="" action="{{route('filterByCause')}}" method="POST">
+    {{-- Filter by cause --}}
+    <form action="{{route('filterByCause')}}" method="POST" id="causeFilter">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="causes">Filter by Cause:</label>
             <select multiple class="form-control" id="causes" name="causes[]">
                 @foreach ($causes as $cause)
-                    <option value="{{$cause->id}}">{{$cause->name}}</option>
+                    <option value={{$cause->id}}>{{$cause->name}}</option>
                 @endforeach
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </form> 
 
     <a href="{{route('events')}}" role="button" class="btn btn-dark">Reset</a>
 
-    <h1>Events</h1>
-    @foreach ($events as $event)
-        <h5>{{$event->title}}</h5>
-        @if ($event->causes->count() == 1)
-            <p>Cause: {{$event->causes->first()->name}}</p>
-        @elseif ($event->causes->count())
-            <p>Causes: 
-                @foreach ($event->causes as $cause)
-                    {{$cause->name . ", "}}
-                @endforeach
-            </p>
-        @endif
-    @endforeach
+    {{-- Display events --}}
+    @include('events.includes.events')
+
+<script>
+    $(document).ready(function() {
+        $("#causeFilter").on('submit', function(e) {
+            e.preventDefault();
+            var causes = $("#causes").val();
+            console.log(causes);
+
+            $.ajax({
+                type:'GET',
+                url:'events/causes',
+                data: {'causes': causes},
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        });
+    });
+  
+</script>
+
 @stop

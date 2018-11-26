@@ -30,13 +30,12 @@ class GpEventController extends Controller
     public function filteredByCause(Request $request)
     {
         $filtered_causes = $request->input('causes');
-        $causes = Cause::all();
 
         $events = GpEvent::whereHas('causes', function ($query) use ($filtered_causes) {
             $query->whereIn('cause_id', $filtered_causes);
         })->get();
 
-        return view('events.index', ['events' => $events, 'causes' => $causes]);
+        return view('events.includes.events', ['events' => $events]);
     }
 
     /**
