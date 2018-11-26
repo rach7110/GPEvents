@@ -21,27 +21,4 @@
     <div id="events">
         @include('events.includes.events')
     </div>
-
-<script>
-    $(document).ready(function() {
-        $("#causeFilter").on('submit', function(e) {
-            e.preventDefault();
-            var causes = $("#causes").val();
-
-            $.ajax({
-                type:'GET',
-                url:'events/causes',
-                data: {'causes': causes},
-                success:function(data){
-                    $("#events").empty().append(data);
-                }
-            }).fail(function(xhr){
-                var errMsg = $.parseJSON(xhr.responseText);
-                console.log(errMsg);
-            });
-        });
-    });
-  
-</script>
-
 @stop
