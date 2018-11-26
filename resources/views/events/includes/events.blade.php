@@ -1,6 +1,7 @@
     <h1>Events</h1>
+    {{-- Map --}}
     <div id="map"></div>
-
+    {{-- Events list --}}
     <h2>Count: {{$events->count()}}</h2>
     @foreach ($events as $event)
         <h5>{{$event->title}}</h5>
