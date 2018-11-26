@@ -18,21 +18,22 @@
     <a href="{{route('events')}}" role="button" class="btn btn-dark">Reset</a>
 
     {{-- Display events --}}
-    @include('events.includes.events')
+    <div id="events">
+        @include('events.includes.events')
+    </div>
 
 <script>
     $(document).ready(function() {
         $("#causeFilter").on('submit', function(e) {
             e.preventDefault();
             var causes = $("#causes").val();
-            console.log(causes);
 
             $.ajax({
                 type:'GET',
                 url:'events/causes',
                 data: {'causes': causes},
                 success:function(data){
-                    console.log(data);
+                    $("#events").replaceWith(data);
                 }
             });
         });
