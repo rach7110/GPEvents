@@ -33,7 +33,7 @@
                 url:'events/causes',
                 data: {'causes': causes},
                 success:function(data){
-                    $("#events").replaceWith(data);
+                    $("#events").empty().append(data);
                 }
             });
         });
