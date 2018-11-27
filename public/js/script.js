@@ -10,7 +10,7 @@ $(document).ready(function() {
             data: {'causes': causes},
             success:function(data){
                 $("#events").empty().append(data);
-                updateMapMarkers(data);
+                // updateMapMarkers(data);
             }
         }).fail(function(xhr){
             var errMsg = $.parseJSON(xhr.responseText);
@@ -20,7 +20,7 @@ $(document).ready(function() {
 });
 
 // Initial load of Google Maps API
-function initMap() {
+function initMap(locations) {
     // var center = {lat: 30.2672, lng: -97.7431}; // Austin
     var center = {lat: 34.0522, lng: -118.2437}; // LA
 
@@ -35,6 +35,7 @@ function initMap() {
     });
 
     // Add markers
+    // TODO: get locations from this project's API.
     var locations = [
         ['Los Angeles', 34.052235, -118.243683],
         ['Santa Monica', 34.024212, -118.496475],
